@@ -3,50 +3,12 @@ $('document').ready(function () {
   var formObject = {
     schema: {
       example: {
-        title: 'JSON Form example to start from',
+        title: 'Scrub template schema',
         type: 'string',
         'enum': [
-          'gettingstarted',
-          'schema-basic',
-          'schema-morecomplex',
-          'schema-array',
-          'fields-common',
-          'fields-password',
-          'fields-textarea',
-          'fields-ace',
-          'fields-color',
-          'fields-checkbox',
-          'fields-checkboxes',
-          'fields-select',
-          'fields-radios',
-          'fields-radiobuttons',
-          'fields-range',
-          'fields-imageselect',
-          'fields-iconselect',
-          'fields-fieldset',
-          'fields-advancedfieldset',
-          'fields-authfieldset',
-          'fields-section',
-          'fields-actions',
-          'fields-array',
-          'fields-tabarray',
-          'fields-tabarray-maxitems',
-          'fields-tabarray-value',
-          'fields-selectfieldset',
-          'fields-selectfieldset-key',
-          'fields-submit',
-          'fields-help',
-          'fields-hidden',
-          'fields-questions',
-          'templating-idx',
-          'templating-value',
-          'templating-values',
-          'templating-tpldata',
-          'events',
-          'previousvalues',
-          'factory-sleek'
+          'scrubtemplate'
         ],
-        'default': 'gettingstarted'
+        'default': 'scrubtemplate'
       },
       greatform: {
         title: 'JSON Form object to render',
@@ -59,47 +21,6 @@ $('document').ready(function () {
         notitle: true,
         prepend: 'Try with',
         htmlClass: 'trywith',
-        titleMap: {
-          'gettingstarted': 'Getting started',
-          'schema-basic': 'JSON Schema - A basic example',
-          'schema-morecomplex': 'JSON Schema - Slightly more complex example',
-          'schema-array': 'JSON Schema - Arrays',
-          'fields-common': 'Fields - Common properties',
-          'fields-password': 'Fields - Gathering secrets: the password type',
-          'fields-textarea': 'Fields - Large text: the textarea type',
-          'fields-ace': 'Fields - Code (JavaScript, JSON...): the ace type',
-          'fields-color': 'Fields - Color picker: the color type',
-          'fields-checkbox': 'Fields - Boolean flag: the checkbox type',
-          'fields-checkboxes': 'Fields - Multiple options: the checkboxes type',
-          'fields-select': 'Fields - Selection list: the select type',
-          'fields-radios': 'Fields - A list of radio buttons: the radios type',
-          'fields-radiobuttons': 'Fields - Radio buttons as real buttons: the radio buttons type',
-          'fields-range': 'Fields - Number: the range type',
-          'fields-imageselect': 'Fields - Image selector: the imageselect type',
-          'fields-iconselect': 'Fields - Icon selector: the iconselect type',
-          'fields-fieldset': 'Fields - Grouping: the fieldset type',
-          'fields-advancedfieldset': 'Fields - Advanced options section: the advancedfieldset type',
-          'fields-authfieldset': 'Fields - Authentication settings section: the authfieldset type',
-          'fields-section': 'Fields - Generic group: the section type',
-          'fields-actions': 'Fields - Group of buttons: the actions type',
-          'fields-array': 'Fields - Generic array: the array type',
-          'fields-tabarray': 'Fields - Arrays with tabs: the tabarray type',
-          'fields-tabarray-maxitems': 'Fields - Arrays with tabs: the tabarray type w/ maxItems',
-          'fields-tabarray-value': 'Fields - Arrays with tabs: the tabarray type w/ default & legend',
-          'fields-selectfieldset': 'Fields - Alternative: the selectfieldset type',
-          'fields-selectfieldset-key': 'Fields - Alternative with schema key',
-          'fields-submit': 'Fields - Submit the form: the submit type',
-          'fields-help': 'Fields - Guide users: the help type',
-          'fields-hidden': 'Fields - Hidden form values: the hidden type',
-          'fields-questions': 'Fields - Series of questions: the questions type',
-          'templating-idx': 'Templating - item index with idx',
-          'templating-value': 'Templating - tab legend with value and valueInLegend',
-          'templating-values': 'Templating - values.xxx to reference another field',
-          'templating-tpldata': 'Templating - Using the tpldata property',
-          'events': 'Using event handlers',
-          'previousvalues': 'Using previously submitted values',
-          'factory-sleek': 'Joshfire Factory - Sleek template'
-        },
         onChange: function (evt) {
           var selected = $(evt.target).val();
 
@@ -108,7 +29,10 @@ $('document').ready(function () {
             { example: selected},
             'Example - ' + selected,
             '?example=' + selected);
-        }
+        },
+          titleMap: {
+              'scrubtemplate': 'Scrub Template'
+          }
       },
       {
         key: 'greatform',
@@ -194,6 +118,7 @@ $('document').ready(function () {
         }
         window.alert('Form submitted. Values object:\n' +
           JSON.stringify(values, null, 2));
+          console.log(JSON.stringify(values, null, 2));
       };
       createdForm.onSubmit = function (errors, values) {
         if (errors) {
@@ -218,7 +143,7 @@ $('document').ready(function () {
 
   // Wait until ACE is loaded
   var itv = window.setInterval(function() {
-    var example = getRequestedExample() || 'gettingstarted';
+    var example = getRequestedExample() || 'scrubtemplate';
     $('.trywith select').val(example);
     if (window.ace) {
       window.clearInterval(itv);

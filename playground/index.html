@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>JSON Form Playground</title>
+    <title>Template generator</title>
     <style>
       @import url("../deps/opt/bootstrap.css");
       @import url("../deps/opt/bootstrap-wysihtml5.css");
@@ -38,7 +38,6 @@
       ._jsonform-array-buttons {
         margin-left: 25px;
       }
-
       .jsonform-required > label:after {
         content: ' *';
         color: red;
@@ -69,15 +68,16 @@
 
     <div class="container">
       <div class="tagline">
-        <p>Choose a JSON Form example below and check the generated form. Refer to the <a href="http://github.com/jsonform/jsonform/wiki">documentation</a> for details and directions to extend the form.</p>
+        <p>Choose a template from the list. Visit <a href="http://github.com/jsonform/jsonform/wiki">documentation</a> for details and directions to extend the form.</p>
       </div>
 
       <div class="row">
         <div class="col-md-5">
-          <form id="form" class="form-vertical"></form>
+          <form id="form" class="form-vertical">
+          </form>
         </div>
         <div class="col-md-7">
-          <h2>Generated form</h2>
+          <h2>Template form</h2>
           <div id="result" class="well">(please wait)</div>
         </div>
       </div>
