@@ -1,49 +1,32 @@
 {
   "schema": {
-    "uri": {
-      "type": "string",
-      "title": "Request URI",
-      "required": true
-    },
-    "scrubData": {
+    "config": {
       "type": "array",
       "items": {
         "type": "object",
-        "title": "Scrub Data",
+        "title": "Scrub Configurtion",
         "properties": {
-          "httpEntityType": {
+          "uri": {
             "type": "string",
-            "title": "HTTP entity type",
-            "enum": [
-              "REQUEST_HEADERS",
-              "REQUEST_BODY",
-              "RESPONSE_HEADERS",
-              "RESPONSE_BODY"
-            ],
-            "value":"REQUEST_BODY",
+            "title": "Request URI",
             "required": true
           },
-          "contentType": {
-            "type": "string",
-            "title": "MIME type for http entity",
-            "enum": [
-              null,
-              "JSON",
-              "XML",
-              "TEXT",
-              "URLENCODED"
-            ],
-            "required": false
-          },
-          "scrubAttributes": {
+          "scrubData": {
             "type": "array",
             "items": {
               "type": "object",
-              "title": "Scrub data attributes",
+              "title": "Scrub Data",
               "properties": {
-                "attributes": {
+                "httpEntityType": {
                   "type": "string",
-                  "title": "Path expression for attribute",
+                  "title": "HTTP entity type",
+                  "enum": [
+                    "REQUEST_HEADERS",
+                    "REQUEST_BODY",
+                    "RESPONSE_HEADERS",
+                    "RESPONSE_BODY"
+                  ],
+                  "value": "REQUEST_BODY",
                   "required": true
                 },
                 "contentType": {
@@ -58,22 +41,48 @@
                   ],
                   "required": false
                 },
-                "partial": {
-                  "type": "object",
-                  "title": "Partial scrub config",
-                  "required": false,
-                  "properties": {
-                    "KEEP_FIRST": {
-                      "type": "integer",
-                      "title": "Count of character to keep from starting.",
-                      "required": false
-                    },
-                    "KEEP_LAST": {
-                      "type": "integer",
-                      "title": "Count of character to keep from last.",
-                      "required": false
-                    }
+                "scrubAttributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "Scrub data attributes",
+                    "properties": {
+                      "attributes": {
+                        "type": "string",
+                        "title": "Path expression for attribute",
+                        "required": true
+                      },
+                      "contentType": {
+                        "type": "string",
+                        "title": "MIME type for http entity",
+                        "enum": [
+                          null,
+                          "JSON",
+                          "XML",
+                          "TEXT",
+                          "URLENCODED"
+                        ],
+                        "required": false
+                      },
+                      "partial": {
+                        "type": "object",
+                        "title": "Partial scrub config",
+                        "required": false,
+                        "properties": {
+                          "KEEP_FIRST": {
+                            "type": "integer",
+                            "title": "Count of character to keep from starting.",
+                            "required": false
+                          },
+                          "KEEP_LAST": {
+                            "type": "integer",
+                            "title": "Count of character to keep from last.",
+                            "required": false
+                          }
 
+                        }
+                      }
+                    }
                   }
                 }
               }

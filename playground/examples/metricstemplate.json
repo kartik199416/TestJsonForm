@@ -1,0 +1,86 @@
+{
+  "schema": {
+    "config": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "title": "Metrics  Configurtion",
+        "properties": {
+          "metricType": {
+            "type": "string",
+            "title": "Metrics name",
+            "required": true
+          },
+          "objectType": {
+            "type": "string",
+            "title": "Object name in JMX bean",
+            "required": true
+          },
+          "label": {
+            "type": "string",
+            "title": "Custom bean name to be logged in logs",
+            "required": false
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "title": "Attribute bean",
+              "properties": {
+                "attributeName": {
+                  "type": "string",
+                  "title": "Attribute name to be captured",
+                  "required": true
+                },
+                "composite": {
+                  "type": "boolean",
+                  "title": "Is attribute has sub attributes ? ",
+                  "description": "If Yes, tick the checkbox.",
+                  "required": false
+                },
+                "key": {
+                  "type": "string",
+                  "title": "key name for attribute",
+                  "description": "Only provide id the attibute is not of composite type, other provide it in nested attribute.",
+                  "required": false
+                },
+                "label": {
+                  "type": "string",
+                  "title": "Label for attribute",
+                  "description": "Only provide id the attibute is not of composite type, other provide it in nested attribute.",
+                  "required": false
+                },
+                "nestedAttributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "title": "Attribute bean",
+                    "properties": {
+                      "attributeName": {
+                        "type": "string",
+                        "title": "Attribute name to be captured",
+                        "required": false
+                      },
+                      "key": {
+                        "type": "string",
+                        "title": "key name for attribute",
+                        "description": "Only provide id the attribute is not of composite type, other provide it in nested attribute.",
+                        "required": false
+                      },
+                      "label": {
+                        "type": "string",
+                        "title": "Label for attribute",
+                        "description": "Only provide id the attribute is not of composite type, other provide it in nested attribute.",
+                        "required": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

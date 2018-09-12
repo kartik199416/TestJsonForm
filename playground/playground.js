@@ -6,7 +6,8 @@ $('document').ready(function () {
         title: 'Scrub template schema',
         type: 'string',
         'enum': [
-          'scrubtemplate'
+          'scrubtemplate',
+          'metricstemplate'
         ],
         'default': 'scrubtemplate'
       },
@@ -31,7 +32,8 @@ $('document').ready(function () {
             '?example=' + selected);
         },
           titleMap: {
-              'scrubtemplate': 'Scrub Template'
+              'scrubtemplate'   : 'Scrub Template',
+              'metricstemplate' : 'Metrics template'
           }
       },
       {
@@ -94,6 +96,7 @@ $('document').ready(function () {
 
     // Reset result pane
     $('#result').html('');
+    // Reset output
 
     // Parse entered content as JavaScript
     // (mostly JSON but functions are possible)
@@ -116,9 +119,8 @@ $('document').ready(function () {
         if (console && console.log) {
           console.log('Values extracted from submitted form', values);
         }
-        window.alert('Form submitted. Values object:\n' +
-          JSON.stringify(values, null, 2));
           console.log(JSON.stringify(values, null, 2));
+          $('#result').html('<pre> '+ JSON.stringify(values.config, null, 2) + '</pre>');
       };
       createdForm.onSubmit = function (errors, values) {
         if (errors) {
